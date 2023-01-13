@@ -31,17 +31,79 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.7.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.7.0.0\lib\net462\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CD_ADO.NET\CD_Categoria.cs" />
+    <Compile Include="CD_ADO.NET\CD_Cliente.cs" />
+    <Compile Include="CD_ADO.NET\CD_Compra.cs" />
+    <Compile Include="CD_ADO.NET\CD_Negocio.cs" />
+    <Compile Include="CD_ADO.NET\CD_PERMISO.cs" />
+    <Compile Include="CD_ADO.NET\CD_Producto.cs" />
+    <Compile Include="CD_ADO.NET\CD_Proveedor.cs" />
+    <Compile Include="CD_ADO.NET\CD_Reporte.cs" />
+    <Compile Include="CD_ADO.NET\CD_Rol.cs" />
+    <Compile Include="CD_ADO.NET\CD_Usuario.cs" />
+    <Compile Include="CD_ADO.NET\CD_Venta.cs" />
+    <Compile Include="CodeDataBase\BloggingContext.cs" />
+    <Compile Include="CodeDataBase\Categoria.cs" />
+    <Compile Include="CodeDataBase\Cliente.cs" />
+    <Compile Include="CodeDataBase\Compra.cs" />
+    <Compile Include="CodeDataBase\Detalle_Compra.cs" />
+    <Compile Include="CodeDataBase\Detalle_Venta.cs" />
+    <Compile Include="CodeDataBase\Permiso.cs" />
+    <Compile Include="CodeDataBase\Producto.cs" />
+    <Compile Include="CodeDataBase\Proveedor.cs" />
+    <Compile Include="CodeDataBase\Rol.cs" />
+    <Compile Include="CodeDataBase\sysdiagrams.cs" />
+    <Compile Include="CodeDataBase\Usuario.cs" />
+    <Compile Include="CodeDataBase\Venta.cs" />
+    <Compile Include="Connections\Connection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
+      <Project>{47419b94-5b7a-4bc2-9987-f0a8c26bb9f0}</Project>
+      <Name>CapaEntidad</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
