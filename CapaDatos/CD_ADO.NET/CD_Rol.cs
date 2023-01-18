@@ -19,7 +19,7 @@ namespace CapaDatos.CD_ADO.NET
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select IdRol,Descripcion from ROL");
+                    query.AppendLine("select RolId,Descripcion from ROL");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -32,13 +32,13 @@ namespace CapaDatos.CD_ADO.NET
                         {
                             lista.Add(new Rol()
                             {
-                                IdRol = Convert.ToInt32(dr["IdRol"]),
+                                IdRol = Convert.ToInt32(dr["RolId"]),
                                 Descripcion = dr["Descripcion"].ToString()
                             });
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     lista = new List<Rol>();

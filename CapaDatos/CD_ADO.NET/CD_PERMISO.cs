@@ -21,10 +21,10 @@ namespace CapaDatos.CD_ADO.NET
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select p.IdRol,p.NombreMenu from PERMISO p");
-                    query.AppendLine("inner join ROL r on r.IdRol = p.IdRol");
-                    query.AppendLine("inner join USUARIO u on u.IdRol = r.IdRol");
-                    query.AppendLine("where u.IdUsuario = @idusuario");
+                    query.AppendLine("select p.RolId,p.NombreMenu from PERMISO p");
+                    query.AppendLine("inner join ROL r on r.RolId = p.RolId");
+                    query.AppendLine("inner join USUARIO u on u.RolId = r.RolId");
+                    query.AppendLine("where u.UsuarioId = @idusuario");
 
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
@@ -41,7 +41,7 @@ namespace CapaDatos.CD_ADO.NET
 
                             lista.Add(new Permiso()
                             {
-                                oRol = new Rol() { IdRol = Convert.ToInt32(dr["IdRol"]) },
+                                oRol = new Rol() { IdRol = Convert.ToInt32(dr["RolId"]) },
                                 NombreMenu = dr["NombreMenu"].ToString(),
                             });
 
@@ -51,10 +51,15 @@ namespace CapaDatos.CD_ADO.NET
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     lista = new List<Permiso>();
+                }
+                finally 
+                {
+                    oconexion.Close();
+                    oconexion.Dispose();
                 }
             }
 

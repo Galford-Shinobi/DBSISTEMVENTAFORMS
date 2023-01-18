@@ -22,8 +22,8 @@ namespace CapaDatos.CD_ADO.NET
                 {
 
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select u.IdUsuario,u.Documento,u.NombreCompleto,u.Correo,u.Clave,u.Estado,r.IdRol,r.Descripcion from usuario u");
-                    query.AppendLine("inner join rol r on r.IdRol = u.IdRol");
+                    query.AppendLine("select u.UsuarioId,u.Documento,u.NombreCompleto,u.Correo,u.Clave,u.Estado,r.RolId,r.Descripcion from usuario u");
+                    query.AppendLine("inner join rol r on r.RolId = u.RolId");
 
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
@@ -39,13 +39,13 @@ namespace CapaDatos.CD_ADO.NET
 
                             lista.Add(new Usuario()
                             {
-                                IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                                IdUsuario = Convert.ToInt32(dr["UsuarioId"]),
                                 Documento = dr["Documento"].ToString(),
                                 NombreCompleto = dr["NombreCompleto"].ToString(),
                                 Correo = dr["Correo"].ToString(),
                                 Clave = dr["Clave"].ToString(),
                                 Estado = Convert.ToBoolean(dr["Estado"]),
-                                oRol = new Rol() { IdRol = Convert.ToInt32(dr["IdRol"]), Descripcion = dr["Descripcion"].ToString() }
+                                oRol = new Rol() { IdRol = Convert.ToInt32(dr["RolId"]), Descripcion = dr["Descripcion"].ToString() }
                             });
 
                         }
@@ -58,6 +58,11 @@ namespace CapaDatos.CD_ADO.NET
                 {
 
                     lista = new List<Usuario>();
+                }
+                finally 
+                {
+                    oconexion.Close();
+                    oconexion.Dispose();
                 }
             }
 
@@ -85,7 +90,7 @@ namespace CapaDatos.CD_ADO.NET
                     cmd.Parameters.AddWithValue("NombreCompleto", obj.NombreCompleto);
                     cmd.Parameters.AddWithValue("Correo", obj.Correo);
                     cmd.Parameters.AddWithValue("Clave", obj.Clave);
-                    cmd.Parameters.AddWithValue("IdRol", obj.oRol.IdRol);
+                    cmd.Parameters.AddWithValue("RolId", obj.oRol.IdRol);
                     cmd.Parameters.AddWithValue("Estado", obj.Estado);
                     cmd.Parameters.Add("IdUsuarioResultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
